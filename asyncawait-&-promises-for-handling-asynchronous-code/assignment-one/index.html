@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises Example</title>
+</head>
+<body>
+    <h1>Promise Example</h1>
+    <p id="status">Waiting for promise to resolve...</p>
+
+    <script>
+         // A function that returns a promise
+       function fetchData(){
+        return new Promise((resolve,reject) => {
+            let success = true;
+            setTimeout(() => {
+                if(success){
+                    resolve('data fetched successfully')
+                }
+                else{
+                    reject('failed to fetch data')
+                }
+            },2000)
+        })
+       }
+
+         // Calling the function and handling the promise
+      fetchData()
+      .then(result => {
+        document.getElementById('status').textContent  =result;
+      })
+      .catch(error => {
+        document.getElementById('status').textContent  =error;
+      })
+       
+    </script>
+
+</body>
+</html>

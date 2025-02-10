@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Var, Let, Const Differences</title>
+</head>
+<body>
+    <h1>Understanding var, let, and const</h1>
+
+
+    <script>
+        // using var
+        var a = 10;
+        console.log('Var a (initial):',a) 
+
+        if(true){
+            var a = 20; // re-declared within block, because var is function or globally scoped
+            console.log('var a (inside block):',a)
+        }
+
+        console.log("Var a (after block):", a); // 20 (it's updated globally) 
+
+
+
+        //using let 
+        let b = 10;
+        console.log('Let b (initial):',b); 
+
+        if(true){
+            let b = 20; // let is block-scoped, so this b is different from the outer b
+            console.log('Let b (inside block):',b);
+        }
+        console.log('Let b (after block):',b);  // 10 (original b is unchanged)
+
+        // using const 
+        const c = 10;
+        console.log("Const c (initial):",c)
+
+        const obj = {name:'test'};
+        console.log('Const object (initial):',obj.name)
+        obj.name = 'superb'
+        console.log('const object (modified):',obj.name)
+
+        const arr = [1,2,3];
+        arr.push(4)
+        console.log('const array (modified):',arr)
+    </script>
+
+</body>
+</html>

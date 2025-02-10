@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/Await Example</title>
+</head>
+<body>
+    
+    <h1>Async/Await Example</h1>
+    <p id="status">Waiting for async operation...</p>
+
+    <script>
+        // A function that returns a promise
+      function fetchData(){
+        return new Promise((resolve,reject) => {
+            let success = true;
+            setTimeout(() => {
+                if(success){
+                    resolve('data fetched successfully')
+                }
+                else{
+                    reject('failed to fetch data')
+                }
+            },2000);  // Simulate async operation (2 seconds delay)
+        })
+      }
+       // Async function to handle the promise
+      async function getData(){
+        try {
+            const response = await fetchData();
+            document.getElementById('status').textContent = response;
+        } catch (error) {
+            document.getElementById('status').textContent = error;
+        }
+      }
+// Call the async function
+getData();
+    </script>
+
+</body>
+</html>
